@@ -1,0 +1,31 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                controller="accController" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="resultData" type="List"/>
+    <div class="slds">
+    <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-max-medium-table--stacked-horizontal">
+        <thead>
+        <tr class="slds-text-heading--label">
+            <th scope="col" class="nobordertop" title="Id">
+            <div>Id</div>
+            </th>
+            <th scope="col" class="nobordertop" title="Name">
+            <div>Name</div>
+            </th>
+            </tr>
+        </thead>
+        <tbody>
+        <aura:iteration items="{!v.resultData}" var="result">
+            <tr>
+            <td data-label="Id" title="Id">
+                <div><a data-record="{!result.Id}" onclick="{!c.redirectToSobject}">{!result.Name}</a></div>
+                </td>
+                <td data-label="Name" title="Name">
+                <div>{!result.Name}</div>
+                </td>
+            </tr>
+            </aura:iteration>
+        </tbody>
+        </table>
+    </div>
+</aura:component>
